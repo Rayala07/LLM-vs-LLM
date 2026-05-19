@@ -1,4 +1,5 @@
 import express from "express";
+import useGraph from "./services/graph.ai.service.js";
 
 const app = express();
 
@@ -8,5 +9,9 @@ app.get("/health", (req, res) => {
     message: "Working.",
   });
 });
+
+app.post("/use_graph", async (req,res) => {
+  await useGraph("What is the capital of France ?")
+})
 
 export default app;
